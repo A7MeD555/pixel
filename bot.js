@@ -658,6 +658,109 @@ m.sendMessage(args)
 }
 });
 
+client.on("message", message => {
+
+          if(!message.channel.guild) return;
+   if(message.author.bot) return;
+      if(message.content === prefix + "image"){ 
+          const embed = new Discord.RichEmbed()
+  
+      .setTitle(`This is  ** ${message.guild.name} **  Photo !`)
+  .setAuthor(message.author.username, message.guild.iconrURL)
+    .setColor(0x164fe3)
+    .setImage(message.guild.iconURL)
+    .setURL(message.guild.iconrURL)
+                    .setTimestamp()
+
+   message.channel.send({embed});
+      }
+  });
+
+client.on('message' , message => {
+if (message.author.bot) return;
+if (message.content.startsWith(prefix + "contact")) {
+if (!message.channel.guild) return;
+
+
+
+let args = message.content.split(" ").slice(1).join(" ");
+
+
+client.users.get("454833625817546772").send(
+    "\n" + "**" + "? السيرفر :" + "**" +
+    "\n" + "**" + "» " + message.guild.name + "**" +
+    "\n" + "**" + " ? المرسل : " + "**" +
+    "\n" + "**" + "» " + message.author.tag + "**" +
+    "\n" + "**" + " ? الرسالة : " + "**" +
+    "\n" + "**" + args + "**")
+
+let embed = new Discord.RichEmbed()
+     .setAuthor(message.author.username, message.author.avatarURL)
+     .setDescription(':mailbox_with_mail: تم ارسال الرسالة الى صاحب البوت بنجاح')
+     .setThumbnail(message.author.avatarURL)
+     .setFooter("By : أحمد#3933")
+                                                
+
+message.channel.send(embed);
+
+
+}
+    
+});
+
+client.on('message', message => {
+    if (message.content.startsWith("p!bans")) {
+        message.guild.fetchBans()
+        .then(bans => message.channel.send(`Number of banned persons **${bans.size}** `))
+}
+});
+
+   client.on('message', message => {
+     if (message.content === "p!support") {
+     let embed = new Discord.RichEmbed()
+  .setAuthor(message.author.username)
+  .setColor("#9B59B6")
+  .addField(" ** :gear: Server Support :gear: **" , "  **https://discord.gg/pb8WDe2**")
+     
+     
+  message.channel.sendEmbed(embed);
+    }
+});
+
+
+
+client.on('message' , message => {
+      if(message.author.bot) return;
+     
+      if(message.content.startsWith(prefix + "rolebc")) {
+        if (!message.member.hasPermission("ADMINISTRATOR"))  return;
+        let args = message.content.split(" ").slice(2);
+     var codes = args.join(' ')
+       
+        if(!codes) {
+          message.channel.send("قم بكتابة الرسالة | !rolebc @everyone message")
+            return;
+        }
+     
+     
+              var role = message.mentions.roles.first();
+                if(!role) {
+                  message.reply("لا توجد رتبة بهذا الاسم")
+                    return;
+                }
+            message.guild.members.filter(m => m.roles.get(role.id)).forEach(n => {
+              n.send(
+              "**" + "السيرفر :" + "\n" +
+              `${message.guild.name}` + "\n" +
+              "المرسل :" + "\n" +
+              `${message.author.tag}` + "\n" +
+              "الرسالة :" + "\n" +
+              `${codes}` + "**"
+              )
+            })
+            message.channel.send(`لقد تم ارسال هذه الرسالة الى ${message.guild.members.filter(m => m.roles.get(role.id)).size} عضو`)
+        }
+    });
 
 // THIS  MUST  BE  THIS  WAY
 client.login(process.env.BOT_TOKEN);
