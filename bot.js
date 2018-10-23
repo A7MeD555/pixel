@@ -762,5 +762,55 @@ client.on('message' , message => {
         }
     });
 
+	 client.on('message', message => {
+              if (!message.channel.guild) return;
+      if(message.content =='p!count')
+	 
+      message.reply(`**${message.guild.memberCount}**`);
+    });
+	
+	    client.on('message', message => {
+   if(message.content.startsWith(prefix + "invites")) {
+    message.guild.fetchInvites().then(invs => {
+      let user = message.mentions.users.first() || message.author
+      let personalInvites = invs.filter(i => i.inviter.id === user.id);
+      let inviteCount = personalInvites.reduce((p, v) => v.uses + p, 0);
+message.channel.send(`${user} has ${inviteCount} invites.`);
+});
+  }
+});
+
+client.on('message', message => {
+    if (message.content === "p!rooms") {
+        if (message.author.bot) return
+                      if (!message.guild) return;
+
+        var channels = message.guild.channels.map(channels => `${channels.name}, `).join(' ')
+        const embed = new Discord.RichEmbed()
+        .setColor('RANDOM')
+        .addField(`${message.guild.name}`,`**Rooms:white_check_mark:**`)
+        .addField(':arrow_down: Rooms Number. :heavy_check_mark:',`** ${message.guild.channels.size}**`)
+        
+.addField(':arrow_down:Rooms  Name. :heavy_check_mark::',`**[${channels}]**`)
+        message.channel.sendEmbed(embed);
+        
+    }
+});
+
+client.on('message', message => {
+if (message.content.startsWith(prefix + 'perms')) {
+         if(!message.channel.guild) return;
+         var perms = JSON.stringify(message.channel.permissionsFor(message.author).serialize(), null, 4);
+         var zPeRms = new Discord.RichEmbed()
+         .setColor('RANDOM')
+         .setTitle(':tools: Permissions')
+         .addField('Your Permissions:',perms)
+
+                  message.channel.send({embed:zPeRms});
+
+    }
+});
+
+
 // THIS  MUST  BE  THIS  WAY
 client.login(process.env.BOT_TOKEN);
