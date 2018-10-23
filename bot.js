@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-var prefix = "p!";
+var prefix = "1";
 client.on('ready', () => {
     console.log('I am ready!');
 });
@@ -9,12 +9,12 @@ client.on('ready', () => {
 
 client.on("ready", () => {
   console.log("Vulnix | Logged in! Server count: ${client.guilds.size}");
-  client.user.setGame(`p!help | By أحمد`);
+  client.user.setGame(`1help | By أحمد`);
 });
 
 
   client.on("message", message => {
- if (message.content === "p!help") {
+ if (message.content === "1help") {
   const embed = new Discord.RichEmbed()  
       .setColor("RANDOM") 
       .setDescription(`
@@ -33,8 +33,8 @@ message.channel.sendEmbed(embed)
 
 
    client.on("message", message => {
-	var prefix = "p!";
- if (message.content === "p!help-gn") {
+	var prefix = "1";
+ if (message.content === "1help-gn") {
 	 message.channel.send('**تم ارسال رسالة في الخاص** :mailbox_with_mail: ');
   const embed = new Discord.RichEmbed() 
       .setColor("RANDOM")
@@ -76,8 +76,8 @@ The bot was made By أحمد#3933
    }); 
 
    client.on("message", message => {
-	var prefix = "p!";
- if (message.content === "p!help-ad") {
+	var prefix = "1";
+ if (message.content === "1help-ad") {
 	 message.channel.send('**تم ارسال رسالة بالخاص** :mailbox_with_mail: ');
   const embed = new Discord.RichEmbed() 
       .setColor("RANDOM")
@@ -120,7 +120,77 @@ The bot was made By أحمد#3933
 }
 }); 
 
+client.on('message', message => {
+    if (message.content.startsWith("1invserver")) {
 
+  message.channel.createInvite({
+        thing: true,
+        maxUses: 100,
+        maxAge: 86400
+    }).then(invite =>
+      message.author.sendMessage(invite.url)
+    )
+    const embed = new Discord.RichEmbed()
+        .setColor("RANDOM")
+        .setDescription("| :white_check_mark:  | :heart:  تم ارسال الرابط على الخاص  ")
+      message.channel.sendEmbed(embed).then(message => {message.delete(10000)})
+              const Embed11 = new Discord.RichEmbed()
+        .setColor("RANDOM")
+                .setAuthor(message.guild.name, message.guild.iconURL)
+        .setDescription(`
+**
+---------------------
+-[${message.guild.name}]  هذا هو رابط سيرفر
+---------------------
+-هذا الرابط صالح ل 100 مستخدم فقط
+---------------------
+-هذا الرابط صالح لمده 24 ساعه فقط
+---------------------
+**`)
+      message.author.sendEmbed(Embed11)
+    }
+});
+
+client.on('message', message => {
+     if(!message.channel.guild) return;
+                if(message.content.startsWith(prefix + 'allbots')) {
+
+    
+    if (message.author.bot) return;
+    let i = 1;
+        const botssize = message.guild.members.filter(m=>m.user.bot).map(m=>`${i++} - <@${m.id}>`);
+          const embed = new Discord.RichEmbed()
+          .setAuthor(message.author.tag, message.author.avatarURL)
+          .setDescription(`**Found ${message.guild.members.filter(m=>m.user.bot).size} bots in this Server**
+${botssize.join('\n')}`)
+.setFooter(client.user.username, client.user.avatarURL)
+.setTimestamp();
+message.channel.send(embed)
+
+}
+
+
+});
+
+client.on('message', function(msg) {
+  if(msg.content.startsWith (prefix + 'server')) {
+    if(!msg.channel.guild) return msg.reply('**:x: اسف لكن هذا الامر للسيرفرات فقط **');
+    let embed = new Discord.RichEmbed()
+    .setColor('RANDOM')
+    .setThumbnail(msg.guild.iconURL)
+    .addField(':globe_with_meridians: **اسم السيرفر : **' , `**[ ${msg.guild.name} ]**`,true)
+    .addField(':earth_africa: ** موقع السيرفر :**',`**[ ${msg.guild.region} ]**`,true)
+    .addField(':military_medal:** الرتب :**',`**[ ${msg.guild.roles.size} ]**`,true)
+    .addField(':bust_in_silhouette:** عدد الاعضاء :**',`**[ ${msg.guild.memberCount} ]**`,true)
+    .addField(':white_check_mark:** عدد الاعضاء الاونلاين :**',`**[ ${msg.guild.members.filter(m=>m.presence.status == 'online').size} ]**`,true)
+    .addField(':pencil:** الرومات الكتابية :**',`**[ ${msg.guild.channels.filter(m => m.type === 'text').size} ]**`,true)
+    .addField(':loud_sound:** رومات الصوت :**',`**[ ${msg.guild.channels.filter(m => m.type === 'voice').size} ]**`,true)
+    .addField(':crown:** صاحب السيرفر :**',`**[ ${msg.guild.owner} ]**`,true)
+    .addField(':id:** ايدي السيرفر :**',`**[ ${msg.guild.id} ]**`,true)
+    .addField(':date:** تم عمل السيرفر في : **',msg.guild.createdAt.toLocaleString())
+    msg.channel.send({embed:embed});
+  }
+});
 
 
  
