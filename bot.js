@@ -773,64 +773,6 @@ client.on('guildMemberAdd', member=> {
     member.addRole(member.guild.roles.find("name","◦ TG »Member"));
     });
 
-   
-client.on("message", (message) => {
-    /// Codes Development.
-   if (message.conten.startsWith("p!ticket")) {     /// Codes Development.
-        const reason = message.content.split(" ").slice(1).join(" ");     /// Codes Development.
-        if (!message.guild.roles.exists("name", "Support Team")) return message.channel.send(`This server doesn't have a \`Support Team\` role made, so the ticket won't be opened.\nIf you are an administrator, make one with that name exactly and give it to users that should be able to see tickets.`);
-        if (message.guild.channels.exists("name", "ticket-{message.author.id}" + message.author.id)) return message.channel.send(`You already have a ticket open.`);    /// Codes Development.
-        message.guild.createChannel(`ticket-${message.author.username}`, "text").then(c => {
-            let role = message.guild.roles.find("name", "Support Team");
-            let role2 = message.guild.roles.find("name", "@everyone");
-            c.overwritePermissions(role, {
-                SEND_MESSAGES: true,
-                READ_MESSAGES: true
-            });    /// Codes Development.
-            c.overwritePermissions(role2, {
-                SEND_MESSAGES: false,
-                READ_MESSAGES: false
-            });
-            c.overwritePermissions(message.author, {
-                SEND_MESSAGES: true,
-                READ_MESSAGES: true
-            });
-            message.channel.send(`:white_check_mark: Your ticket has been created, #${c.name}.`);
-            const embed = new Discord.RichEmbed()
-                .setColor(0xCF40FA)
-                .addField(`Hey ${message.author.username}!`, `Please try explain why you opened this ticket with as much detail as possible. Our **Support Staff** will be here soon to help.`)
-                .setTimestamp();
-            c.send({
-                embed: embed
-            });
-        }).catch(console.error); 
-    }
-
-
-  if (message.content.startsWith("p!close")) {
-        if (!message.channel.name.startsWith(`ticket-`)) return message.channel.send(`You can't use the close command outside of a ticket channel.`);
-
-        message.channel.send(`Are you sure? Once confirmed, you cannot reverse this action!\nTo confirm, type \`#confirm\`. This will time out in 10 seconds and be cancelled.`)
-            .then((m) => {
-                message.channel.awaitMessages(response => response.content === 'p!confirm', {
-                        max: 1,
-                        time: 10000,
-                        errors: ['time'],
-                    })    /// Codes Development.
-                    .then((collected) => {
-                        message.channel.delete();
-                    })    /// Codes Development.
-                    .catch(() => {
-                        m.edit('Ticket close timed out, the ticket was not closed.').then(m2 => {
-                            m2.delete();
-                        }, 3000);
-                    });
-            });
-    }
-
-});
-    /// Codes Development.
-
 client.on("guildMemberAdd", member => {
   member.createDM().then(function (channel) {
   return channel.send(`:rose:  ولكم نورت السيرفر:rose: 
@@ -871,23 +813,7 @@ client.on('message', function(message) {
     }
 });
     
-	   client.on('message', message => {
-              if (!message.channel.guild) return;
-      if(message.content =='p!member')  /// By KillerFox_ حقوق الفا كودز
-      var IzRo = new Discord.RichEmbed() /// By KillerFox_ حقوق الفا كودز
-      .setThumbnail(message.author.avatarURL)  /// By KillerFox_ حقوق الفا كودز
-      .setFooter(message.author.username, message.author.avatarURL) /// الفا كودز
-      .setTitle('🌷| Members info') /// By KillerFox_ حقوق الفا كودز
-      .addBlankField(true)
-      .addField('📗| Online',  /// By KillerFox_ حقوق الفا كودز
-      `${message.guild.members.filter(m=>m.presence.status == 'online').size}`)  /// By KillerFox_ حقوق الفا كودز  /// By KillerFox_ حقوق الفا كودز
-      .addField('📕| DND',`${message.guild.members.filter(m=>m.presence.status == 'dnd').size}`)  /// By KillerFox_ حقوق الفا كودز
-      .addField('📙| Idle',`${message.guild.members.filter(m=>m.presence.status == 'idle').size}`) /// By KillerFox_ حقوق الفا كودز
-      .addField('📓| Offline',`${message.guild.members.filter(m=>m.presence.status == 'offline').size}`) /// By KillerFox_ حقوق الفا كودز
-      .addField('➡| Server Members',`${message.guild.memberCount}`) /// By KillerFox_ حقوق الفا كودز
-      message.channel.send(IzRo);
-    
-    });
+
 
 // THIS  MUST  BE  THIS  WAY
 client.login(process.env.BOT_TOKEN);
