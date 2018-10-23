@@ -871,6 +871,18 @@ client.on('message', function(message) {
     }
 });
     
+client.on("message", message => {
+    if(message.content.startsWith(prefix + "members")) {
+        let embed = new Discord.RichEmbed()
+            .setTitle("Members Status. 🥀")
+            .addField("🙂 Online", `  ${message.guild.members.filter(a => a.presence.status === "online").size}\n`, true)
+            .addField("😴 Offline", `  ${message.guild.members.filter(a => a.presence.status === 'offline').size}\n`, true)
+            .addField("🤒 DND", `  ${message.guild.members.filter(a => a.presence.status === 'dnd').size}\n`, true)
+            .addField("🙄 Idle", `  ${message.guild.members.filter(a => a.presence.status === 'idle').size}\n`, true)
+            .setColor("RANDOM");
+                        message.channel.sendEmbed(embed);
+    }
+});
 
 // THIS  MUST  BE  THIS  WAY
 client.login(process.env.BOT_TOKEN);
