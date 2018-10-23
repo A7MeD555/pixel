@@ -918,5 +918,53 @@ if (message.content.toLowerCase().startsWith(prefix + `close`)) {
 
 });
 
+client.on('message', message => {
+  if (true) {
+if (message.content === 'p!invite') {
+      message.author.send(' :gift_heart: رابط بوتك  |  تفضل ربط البوت https://discordapp.com/api/oauth2/authorize?client_id=503961088237240330&permissions=0&scope=bot    ').catch(e => console.log(e.stack));
+
+    }
+   } 
+  });
+
+
+client.on('message', message => {
+     if (message.content === "p!invite") {
+     let embed = new Discord.RichEmbed()
+  .setAuthor(message.author.username)
+  .setColor("#9B59B6")
+  .addField(" Done | تــــم" , " |  تــــم ارســالك في الخــاص")
+     
+     
+     
+  message.channel.sendEmbed(embed);
+    }
+});
+
+client.on('message', msg => {
+  if(msg.content === 'p!hide') {
+    msg.guild.channels.forEach(c => {
+      c.overwritePermissions(msg.guild.id, {
+        SEND_MESSAGES: false,
+        READ_MESSAGES: false
+      })
+    })
+    msg.channel.send('.')
+  }
+})
+ 
+client.on('message', msg => {
+  if(msg.content === 'p!unhide') {
+    msg.guild.channels.forEach(c => {
+      c.overwritePermissions(msg.guild.id, {
+        SEND_MESSAGES: true,
+        READ_MESSAGES: true
+      })
+    })
+    msg.channel.send('.')
+  }
+}) 
+
+
 // THIS  MUST  BE  THIS  WAY
 client.login(process.env.BOT_TOKEN);
