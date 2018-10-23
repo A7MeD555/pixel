@@ -850,6 +850,16 @@ client.on("guildMemberAdd", member => {
 }).catch(console.error)
 })
 
+   client.on('message', message => {
+    if(message.content.includes('discord.gg')){
+                                            if(!message.channel.guild) return message.reply('** من جد تنشر لي خاص؟ ترا انا بوت يحمار ? 🤔   **');
+        if (!message.member.hasPermissions(['ADMINISTRATOR'])){
+        message.delete()
+    return message.reply(`** ممنوع نشر سيرفرات اخري تحذير ! :angry: !**`)
+    }
+}
+});
+
     
 
 // THIS  MUST  BE  THIS  WAY
