@@ -65,7 +65,7 @@ p!support ➾ سيرفر الدعم
 =========================================================
 وقريباً المزيد من الاكواد ان شاء الله انتظرونأأ
 =========================================================
-Support server : https://discord.gg/SyFD2rU
+Support server : https://discord.gg/pb8WDe2
 The bot was made By أحمد#3933
 `)
    message.author.sendEmbed(embed)
@@ -107,7 +107,7 @@ p!unhide ➾ لاظهار جميع الرومات
 =========================================================
 وقريباً المزيد من الاكواد ان شاء الله انتظروونأ
 =========================================================
-Support server : https://discord.gg/SyFD2rU
+Support server : https://discord.gg/pb8WDe2
 The bot was made By أحمد#3933
 `)
    message.author.sendEmbed(embed)
