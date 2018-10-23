@@ -372,6 +372,112 @@ client.on('message', msg => {
 }
 });
 
+client.on('message', message => {
+                                if(!message.channel.guild) return;
+                        if (message.content.startsWith(prefix + "ping")) {
+                            if(!message.channel.guild) return;
+                            var msg = `${Date.now() - message.createdTimestamp}`
+                            var api = `${Math.round(client.ping)}`
+                            if (message.author.bot) return;
+                        let embed = new Discord.RichEmbed()
+                        .setAuthor(message.author.username,message.author.avatarURL)
+                        .setColor('RANDOM')
+                        .addField('**Time Taken:**',msg + " ms :signal_strength: ")
+                        .addField('**WebSocket:**',api + " ms :signal_strength: ")
+         message.channel.send({embed:embed});
+                        }
+ });
+ 	
+	client.on('message', message => {
+    if (message.content.startsWith("p!avatar")) {
+        var mentionned = message.mentions.users.first();
+    var x5bzm;
+      if(mentionned){
+          var x5bzm = mentionned;
+      } else {
+          var x5bzm = message.author;
+          
+      }
+        const embed = new Discord.RichEmbed()
+        .setColor("RANDOM")
+        .setImage(`${x5bzm.avatarURL}`)
+      message.channel.sendEmbed(embed);
+    }
+});
+
+client.on('message', message => {
+
+    if (message.content === "p!mutechannel") {
+                        if(!message.channel.guild) return message.reply(' This command only for servers');
+
+if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply(' ليس لديك صلاحيات');
+           message.channel.overwritePermissions(message.guild.id, {
+         SEND_MESSAGES: false
+
+           }).then(() => {
+               message.reply("تم تقفيل الشات :white_check_mark: ")
+           });
+             }
+//™¦༺♚ƙἶղց|MaS♚༺¦™#7105
+if (message.content === "p!unmutechannel") {
+    if(!message.channel.guild) return message.reply(' This command only for servers');
+
+if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('ليس لديك صلاحيات');
+           message.channel.overwritePermissions(message.guild.id, {
+         SEND_MESSAGES: true
+
+           }).then(() => {
+               message.reply("تم فتح الشات:white_check_mark:")
+           });
+             }
+
+
+
+});
+
+client.on('message', message => {
+if (message.content.startsWith(prefix + "uptime")) {
+    let uptime = client.uptime;
+
+    let days = 0;
+    let hours = 0;
+    let minutes = 0;
+    let seconds = 0;
+    let notCompleted = true;
+
+    while (notCompleted) {
+
+        if (uptime >= 8.64e+7) {
+
+            days++;
+            uptime -= 8.64e+7;
+
+        } else if (uptime >= 3.6e+6) {
+
+            hours++;
+            uptime -= 3.6e+6;
+
+        } else if (uptime >= 60000) {
+
+            minutes++;
+            uptime -= 60000;
+
+        } else if (uptime >= 1000) {
+            seconds++;
+            uptime -= 1000;
+
+        }
+
+        if (uptime < 1000)  notCompleted = false;
+
+    }
+
+    message.channel.send("`" + `${days} days, ${hours} hrs, ${minutes} min , ${seconds} sec` + "`");
+
+
+}
+});
+
 
 // THIS  MUST  BE  THIS  WAY
 client.login(process.env.BOT_TOKEN);
