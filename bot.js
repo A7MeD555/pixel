@@ -47,6 +47,7 @@ p!ping ➾ سرعة اتصالك بالانترنت
 p!avatar ➾ يظهر صورة بروفابلك
 p!image ➾ لعرض صورة السيرفر
 p!server ➾ معلومات عن السيرفر
+p!meb ➾ لمعرفة حالات الاعضاء
 p!invserver ➾ لاخت انفيت في الخاص
 p!roles ➾ لمعرفة كل رتب السيرفر
 p!bans ➾ لمعرفة عدد الاشخاص المبندة
@@ -89,8 +90,9 @@ p!rolebc @rolename ➾ لارسال رسالة لاعضاء برتبهم الم�
 p!fastrandom ➾ لاختيار احد من الاعضاء عشوائي
 p!ct ➾ لعمل روم كتابي
 p!cv ➾ لعمل روم صوتي
+p!setVoice ➾ لعمل روم يحسب من في الرومات الصوتية
+p!setCount ➾ لعمل روم يحسب كل اعضاء السيرفر
 p!nickname [@mention] [newname] ➾ لتغير اسم شخص معين 
-p!user ➾ لعمل روم يحسب عدداعضاء السيرفر
 p!ban [@mention] [reason] ➾  لحظر شخص من السيرفر
 p!kick [@mention] [reason] ➾ لطرد شخص من السيرفر
 p!mute [@mention] [reason] ➾ لاعطاء ميوت لعضو
@@ -1193,20 +1195,6 @@ client.on('message', message => {
       message.channel.send(IzRo);
     
     });
-
-client.on('message', message => {
-    if(message.content == (prefix + "mb")) {
-    const embed = new Discord.RichEmbed()
-    .setDescription(`**Members info🔋
-:green_heart: online:   ${message.guild.members.filter(m=>m.presence.status == 'online').size}
-:heart:dnd:       ${message.guild.members.filter(m=>m.presence.status == 'dnd').size}
-:yellow_heart: idle:      ${message.guild.members.filter(m=>m.presence.status == 'idle').size}   
-:black_heart: offline:   ${message.guild.members.filter(m=>m.presence.status == 'offline').size} 
-:blue_heart:   all:  ${message.guild.memberCount}**`)         
-         message.channel.send({embed});
-
-    }
-  });
 
 client.on('message',async message => {
     if(message.content.startsWith(prefix + "setVoice")) {
