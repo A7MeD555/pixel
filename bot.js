@@ -56,8 +56,10 @@ p!invites ➾ لمعرفة كام انفيت ليك بالسيرفر
 p!uptime ➾ لمعرفة كام وقت شغال البوت
 p!botserver ➾ لمعرفة في كام سيرفر البوت
 p!bot ➾ معلومات عن البوت
+p!emojilist ➾ لعرض كل ايموجي السيرفر
 p!allbots ➾ لعرض كل بوتات السيرفر
 p!count ➾ يعرضلك عدد الاشخاص الي بالسيرفر
+p!rules ➾ لمعرفة قوانين السيرفر
 p!contact ➾ لمراسله صاحب البوت
 p!invites ➾ يعرضلك عدد انفايتاتك بالسيرفر
 p!invite ➾ رابط البوت 
@@ -1140,7 +1142,7 @@ if(!message.guild.member(client.user).hasPermission("MANAGE_MESSAGES")) return m
 });
 
 client.on('message', message => {
-            if (message.content.startsWith("rules")) {
+            if (message.content.startsWith("p!rules")) {
      let embed = new Discord.RichEmbed()
 .setThumbnail(message.author.avatarURL)
 .addField('قوانين سيرفر ! Top Gamers')
@@ -1175,13 +1177,73 @@ let PREFIX = 'p!'
 });
 
 client.on('message', message => {
-            if (message.content.startsWith("هلا")) {
-     let embed = new Discord.RichEmbed()
-.setThumbnail(message.author.avatarURL)
-.addField('هلا بيك ياغالي')
-  message.channel.sendEmbed(embed);
+              if (!message.channel.guild) return;
+      if(message.content =='p!meb')  /// By KillerFox_ حقوق الفا كودز
+      var IzRo = new Discord.RichEmbed() /// By KillerFox_ حقوق الفا كودز
+      .setThumbnail(message.author.avatarURL)  /// By KillerFox_ حقوق الفا كودز
+      .setFooter(message.author.username, message.author.avatarURL) /// الفا كودز
+      .setTitle('🌷| Members info') /// By KillerFox_ حقوق الفا كودز
+      .addBlankField(true)
+      .addField('📗| Online',  /// By KillerFox_ حقوق الفا كودز
+      `${message.guild.members.filter(m=>m.presence.status == 'online').size}`)  /// By KillerFox_ حقوق الفا كودز  /// By KillerFox_ حقوق الفا كودز
+      .addField('📕| DND',`${message.guild.members.filter(m=>m.presence.status == 'dnd').size}`)  /// By KillerFox_ حقوق الفا كودز
+      .addField('📙| Idle',`${message.guild.members.filter(m=>m.presence.status == 'idle').size}`) /// By KillerFox_ حقوق الفا كودز
+      .addField('📓| Offline',`${message.guild.members.filter(m=>m.presence.status == 'offline').size}`) /// By KillerFox_ حقوق الفا كودز
+      .addField('➡| Server Members',`${message.guild.memberCount}`) /// By KillerFox_ حقوق الفا كودز
+      message.channel.send(IzRo);
+    
+    });
+
+client.on('message', message => {
+    if(message.content == (prefix + "mb")) {
+    const embed = new Discord.RichEmbed()
+    .setDescription(`**Members info🔋
+:green_heart: online:   ${message.guild.members.filter(m=>m.presence.status == 'online').size}
+:heart:dnd:       ${message.guild.members.filter(m=>m.presence.status == 'dnd').size}
+:yellow_heart: idle:      ${message.guild.members.filter(m=>m.presence.status == 'idle').size}   
+:black_heart: offline:   ${message.guild.members.filter(m=>m.presence.status == 'offline').size} 
+:blue_heart:   all:  ${message.guild.memberCount}**`)         
+         message.channel.send({embed});
+
     }
-})
+  });
+
+client.on('message',async message => {
+    if(message.content.startsWith(prefix + "setVoice")) {
+    if(!message.guild.member(message.author).hasPermissions('MANAGE_CHANNELS')) return message.reply('❌ **ليس لديك الصلاحيات الكافية**');
+    if(!message.guild.member(client.user).hasPermissions(['MANAGE_CHANNELS','MANAGE_ROLES_OR_PERMISSIONS'])) return message.reply('❌ **ليس معي الصلاحيات الكافية**');
+    message.channel.send('✅| **تم عمل الروم بنجاح**');
+    message.guild.createChannel(`Voice Online : [ ${message.guild.members.filter(m => m.voiceChannel).size} ]` , 'voice').then(c => {
+      console.log(`Voice online channel setup for guild: \n ${message.guild.name}`);
+      c.overwritePermissions(message.guild.id, {
+        CONNECT: false,
+        SPEAK: false
+      });
+      setInterval(function() {
+        c.setName(`Voice Online : [ ${message.guild.members.filter(m => m.voiceChannel).size} ]`)
+      },1000);
+    });
+    }
+  });
+
+  client.on('message',async message => {
+    if(message.content.startsWith(prefix + "setCount")) {
+    if(!message.guild.member(message.author).hasPermissions('MANAGE_CHANNELS')) return message.reply('❌ **ليس لديك الصلاحيات الكافية**');
+    if(!message.guild.member(client.user).hasPermissions(['MANAGE_CHANNELS','MANAGE_ROLES_OR_PERMISSIONS'])) return message.reply('❌ **ليس معي الصلاحيات ال��افية**');
+    message.channel.send('✅| **تم عمل الروم بنجاح**');
+    message.guild.createChannel(`Members Count : [ ${message.guild.members.size} ]` , 'voice').then(c => {
+      console.log(`Count Members channel setup for guild: \n ${message.guild.name}`);
+      c.overwritePermissions(message.guild.id, {
+        CONNECT: false,
+        SPEAK: false
+      });
+      setInterval(function() {
+        c.setName(`Members Count : [ ${message.guild.members.size} ]`)
+      },1000);
+    });
+    }
+  });
+
 
 // THIS  MUST  BE  THIS  WAY
 client.login(process.env.BOT_TOKEN);
