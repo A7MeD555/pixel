@@ -1233,7 +1233,7 @@ client.on('message',async message => {
   });
 
 client.on("guildMemberAdd", (member) => {
-    let channel = member.guild.channels.get("510070647335157761");
+    let channel = member.guild.channels.get("512360313736265731");
     if (!channel) {
         console.log("!the channel id it's not correct");
         return;
@@ -1244,7 +1244,7 @@ client.on("guildMemberAdd", (member) => {
     console.log('-');
     var guild;
     while (!guild)
-        guild = client.guilds.get("509664713617965087");
+        guild = client.guilds.get("470793372177793035");
     guild.fetchInvites().then((data) => {
         data.forEach((Invite, key, map) => {
             var Inv = Invite.code;
@@ -1263,7 +1263,7 @@ client.on('guildMemberAdd', member => {
     const ei = invites[member.guild.id];
     const invite = guildInvites.find(i => ei.get(i.code).uses < i.uses);
     const inviter = client.users.get(invite.inviter.id);
-    const stewart = member.guild.channels.find("name", "welcome");
+    const stewart = member.guild.channels.find("name", "hi");
      stewart.send(`<@${member.user.id}> تمت الدعوه من <@${inviter.id}>`);
    //  stewart.send(`<@${member.user.id}> joined using invite code ${invite.code} from <@${inviter.id}>. Invite was used ${invite.uses} times since its creation.`);
   }); 
