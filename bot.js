@@ -9,20 +9,20 @@ client.on('ready', () => {
 
 client.on("ready", () => {
   console.log("Vulnix | Logged in! Server count: ${client.guilds.size}");
-  client.user.setGame(`p!help | By أحمد`);
+  client.user.setGame(`t!help | By ↄᓄב I♛`);
 });
 
 
   client.on("message", message => {
- if (message.content === "p!help") {
+ if (message.content === "t!help") {
   const embed = new Discord.RichEmbed()  
       .setColor("RANDOM") 
       .setDescription(`
 	  
 	        اختر: 
  
-p!help-gn ⇏ اوامر عامة
-p!help-ad ⇏ اوامر ادارة السيرفر			 
+t!help-gn ⇏ اوامر عامة
+t!help-ad ⇏ اوامر ادارة السيرفر			 
 
 `)
 message.channel.sendEmbed(embed)
@@ -33,7 +33,7 @@ message.channel.sendEmbed(embed)
 
 
    client.on("message", message => {
-	var prefix = "p!";
+	var prefix = "t!";
  if (message.content === "p!help-gn") {
 	 message.channel.send('**تم ارسال رسالة في الخاص** :mailbox_with_mail: ');
   const embed = new Discord.RichEmbed() 
@@ -41,30 +41,30 @@ message.channel.sendEmbed(embed)
       .setDescription(`
              
 ===================== اوامر عامة ===================== 
-p!new ➾ لعمل تذكرة
-p!id ➾ معلومات عن حسابك
-p!ping ➾ سرعة اتصالك بالانترنت
-p!avatar ➾ يظهر صورة بروفابلك
-p!image ➾ لعرض صورة السيرفر
-p!server ➾ معلومات عن السيرفر
-p!meb ➾ لمعرفة حالات الاعضاء
-p!invserver ➾ لاخت انفيت في الخاص
-p!roles ➾ لمعرفة كل رتب السيرفر
-p!bans ➾ لمعرفة عدد الاشخاص المبندة
-p!perms ➾ يعرض لك برمشناتك بالسيرفر  
-p!p!rooms ➾ لعرض كل رومات السيرفر
-p!invites ➾ لمعرفة كام انفيت ليك بالسيرفر
-p!uptime ➾ لمعرفة كام وقت شغال البوت
-p!botserver ➾ لمعرفة في كام سيرفر البوت
-p!bot ➾ معلومات عن البوت
-p!emojilist ➾ لعرض كل ايموجي السيرفر
-p!allbots ➾ لعرض كل بوتات السيرفر
-p!count ➾ يعرضلك عدد الاشخاص الي بالسيرفر
-p!rules ➾ لمعرفة قوانين السيرفر
-p!contact ➾ لمراسله صاحب البوت
-p!invites ➾ يعرضلك عدد انفايتاتك بالسيرفر
-p!invite ➾ رابط البوت 
-p!support ➾ سيرفر الدعم
+t!new ➾ لعمل تذكرة
+t!id ➾ معلومات عن حسابك
+t!ping ➾ سرعة اتصالك بالانترنت
+t!avatar ➾ يظهر صورة بروفابلك
+t!image ➾ لعرض صورة السيرفر
+t!server ➾ معلومات عن السيرفر
+t!meb ➾ لمعرفة حالات الاعضاء
+t!invserver ➾ لاخت انفيت في الخاص
+t!roles ➾ لمعرفة كل رتب السيرفر
+t!bans ➾ لمعرفة عدد الاشخاص المبندة
+t!perms ➾ يعرض لك برمشناتك بالسيرفر  
+t!p!rooms ➾ لعرض كل رومات السيرفر
+t!invites ➾ لمعرفة كام انفيت ليك بالسيرفر
+t!uptime ➾ لمعرفة كام وقت شغال البوت
+t!botserver ➾ لمعرفة في كام سيرفر البوت
+t!bot ➾ معلومات عن البوت
+t!emojilist ➾ لعرض كل ايموجي السيرفر
+t!allbots ➾ لعرض كل بوتات السيرفر
+t!count ➾ يعرضلك عدد الاشخاص الي بالسيرفر
+t!rules ➾ لمعرفة قوانين السيرفر
+t!contact ➾ لمراسله صاحب البوت
+t!invites ➾ يعرضلك عدد انفايتاتك بالسيرفر
+t!invite ➾ رابط البوت 
+t!support ➾ سيرفر الدعم
 =========================================================
 وقريباً المزيد من الاكواد ان شاء الله انتظرونأأ
 =========================================================
@@ -85,29 +85,29 @@ The bot was made By أحمد#3933
       .setDescription(`
              
 ==================== اوامر ادارية ===================== 
-p!bc ➾ لارسال رساله لجميع الاعضاء
-p!rolebc @rolename ➾ لارسال رسالة لاعضاء برتبهم المحددة
-p!fastrandom ➾ لاختيار احد من الاعضاء عشوائي
-p!ct ➾ لعمل روم كتابي
-p!cv ➾ لعمل روم صوتي
-p!setVoice ➾ لعمل روم يحسب من في الرومات الصوتية
-p!setCount ➾ لعمل روم يحسب كل اعضاء السيرفر
-p!nickname [@mention] [newname] ➾ لتغير اسم شخص معين 
-p!ban [@mention] [reason] ➾  لحظر شخص من السيرفر
-p!kick [@mention] [reason] ➾ لطرد شخص من السيرفر
-p!mute [@mention] [reason] ➾ لاعطاء ميوت لعضو
-p!unmute [@mention] ➾ لفك الميوت عن عضو
-p!move [@mention] ➾ لنقل عضو لرومك الصوتي
-p!move all ➾ لسحب جميع الاعضاء المتواجدين بالرومات الي رومك
-p!makecolors [number] ➾ لصنع عدد من الالوان
-p!color [number] ➾ لأخذ رتبة لون
-p!mutechannel ➾ لاقفال الشات
-p!unmutechannel ➾ لفتح الشات
-p!clear ➾ لمسح الشات
-p!role [@mention] [role name]  ➾ لاعطاء رتبة لعضو
-p!roleremove [@mention] [role name] ➾ لسحب رتبة من عضو
-p!hide ➾ لاخفأء جميع الرومات 
-p!unhide ➾ لاظهار جميع الرومات
+t!bc ➾ لارسال رساله لجميع الاعضاء
+t!rolebc @rolename ➾ لارسال رسالة لاعضاء برتبهم المحددة
+t!fastrandom ➾ لاختيار احد من الاعضاء عشوائي
+t!ct ➾ لعمل روم كتابي
+t!cv ➾ لعمل روم صوتي
+t!setVoice ➾ لعمل روم يحسب من في الرومات الصوتية
+t!setCount ➾ لعمل روم يحسب كل اعضاء السيرفر
+t!nickname [@mention] [newname] ➾ لتغير اسم شخص معين 
+t!ban [@mention] [reason] ➾  لحظر شخص من السيرفر
+t!kick [@mention] [reason] ➾ لطرد شخص من السيرفر
+t!mute [@mention] [reason] ➾ لاعطاء ميوت لعضو
+t!unmute [@mention] ➾ لفك الميوت عن عضو
+t!move [@mention] ➾ لنقل عضو لرومك الصوتي
+t!move all ➾ لسحب جميع الاعضاء المتواجدين بالرومات الي رومك
+t!makecolors [number] ➾ لصنع عدد من الالوان
+t!color [number] ➾ لأخذ رتبة لون
+t!mutechannel ➾ لاقفال الشات
+t!unmutechannel ➾ لفتح الشات
+t!clear ➾ لمسح الشات
+t!role [@mention] [role name]  ➾ لاعطاء رتبة لعضو
+t!roleremove [@mention] [role name] ➾ لسحب رتبة من عضو
+t!hide ➾ لاخفأء جميع الرومات 
+t!unhide ➾ لاظهار جميع الرومات
 =========================================================
 وقريباً المزيد من الاكواد ان شاء الله انتظروونأ
 =========================================================
@@ -120,7 +120,7 @@ The bot was made By أحمد#3933
 }); 
 
 client.on('message', message => {
-    if (message.content.startsWith("p!invserver")) {
+    if (message.content.startsWith("t!invserver")) {
 
   message.channel.createInvite({
         thing: true,
@@ -254,7 +254,7 @@ client.on('message', message => {
 	  client.on("message",  message => {
 
          let args = message.content.split(' ').slice(1);
-    if(message.content.startsWith('p!nickname')) {
+    if(message.content.startsWith('t!nickname')) {
         if (!message.member.hasPermission("MANAGE_NICKNAMES")) {
             message.channel.send("حط الاسم")
         } else {
@@ -270,7 +270,7 @@ client.on('message', message => {
 	
 client.on ('message',async Sal => { //By Salto7#4595
     let embed = new Discord.RichEmbed()
-    if (Sal.content === "p!id") {
+    if (Sal.content === "t!id") {
       let embed = new Discord.RichEmbed()
      .setColor("RANDOM")
      .setThumbnail(Sal.author.avatarURL)
@@ -284,7 +284,7 @@ client.on ('message',async Sal => { //By Salto7#4595
   });
   
 client.on('message', message => {
-    if (message.content === 'p!roles') {
+    if (message.content === 't!roles') {
         var roles = message.guild.roles.map(roles => `${roles.name}, `).join(' ')
         const embed = new Discord.RichEmbed()
         .setColor('RANDOM')
@@ -367,7 +367,7 @@ client.on('message', message => {
  });
  	
 	client.on('message', message => {
-    if (message.content.startsWith("p!avatar")) {
+    if (message.content.startsWith("t!avatar")) {
         var mentionned = message.mentions.users.first();
     var x5bzm;
       if(mentionned){
@@ -385,7 +385,7 @@ client.on('message', message => {
 
 client.on('message', message => {
 
-    if (message.content === "p!mutechannel") {
+    if (message.content === "t!mutechannel") {
                         if(!message.channel.guild) return message.reply(' This command only for servers');
 
 if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply(' ليس لديك صلاحيات');
@@ -397,7 +397,7 @@ if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply(' لي
            });
              }
 //™¦༺♚ƙἶղց|MaS♚༺¦™#7105
-if (message.content === "p!unmutechannel") {
+if (message.content === "t!unmutechannel") {
     if(!message.channel.guild) return message.reply(' This command only for servers');
 
 if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('ليس لديك صلاحيات');
@@ -577,7 +577,7 @@ message.channel.send(`**:white_check_mark: ${user.tag} banned from the server ! 
 });
 
 client.on('message' , message => {
-if(message.content === 'p!voice') {
+if(message.content === 't!voice') {
     message.channel.send(`**عدد الاشخاص الموجودين بـ  الرومات الصوتيه : ${message.guild.members.filter(g => g.voiceChannel).size}**`);
 }
 });
@@ -655,7 +655,7 @@ let embed = new Discord.RichEmbed()
      .setAuthor(message.author.username, message.author.avatarURL)
      .setDescription(':mailbox_with_mail: تم ارسال الرسالة الى صاحب البوت بنجاح')
      .setThumbnail(message.author.avatarURL)
-     .setFooter("By : أحمد#3933")
+     .setFooter("By : ↄᓄב I♛#3933")
                                                 
 
 message.channel.send(embed);
@@ -666,14 +666,14 @@ message.channel.send(embed);
 });
 
 client.on('message', message => {
-    if (message.content.startsWith("p!bans")) {
+    if (message.content.startsWith("t!bans")) {
         message.guild.fetchBans()
         .then(bans => message.channel.send(`Number of banned persons **${bans.size}** `))
 }
 });
 
    client.on('message', message => {
-     if (message.content === "p!support") {
+     if (message.content === "t!support") {
      let embed = new Discord.RichEmbed()
   .setAuthor(message.author.username)
   .setColor("#9B59B6")
@@ -721,7 +721,7 @@ client.on('message' , message => {
 
 	 client.on('message', message => {
               if (!message.channel.guild) return;
-      if(message.content =='p!count')
+      if(message.content =='t!count')
 	 
       message.reply(`**${message.guild.memberCount}**`);
     });
@@ -738,7 +738,7 @@ message.channel.send(`${user} has ${inviteCount} invites.`);
 });
 
 client.on('message', message => {
-    if (message.content === "p!rooms") {
+    if (message.content === "t!rooms") {
         if (message.author.bot) return
                       if (!message.guild) return;
 
@@ -794,7 +794,7 @@ client.on('message', message=> {
     if (message.author.bot) return;
     if (message.isMentioned(client.user))
     {
-    message.reply(" هلا امر");
+    message.reply(" ^_^ امر");
     }
 });
 
@@ -870,7 +870,7 @@ client.on("message", (message) => {
 if (message.content.toLowerCase().startsWith(prefix + `new`)) {
     const reason = message.content.split(" ").slice(1).join(" ");
     if (!message.guild.roles.exists("name", "Support Team")) return message.channel.send(`This server doesn't have a \`Support Team\` role made, so the ticket won't be opened.\nIf you are an administrator, make one with that name exactly and give it to users that should be able to see tickets.`);
-    if (message.guild.channels.exists("name", "ticket-" + message.author.id)) return message.channel.send(`You already have a ticket open.`);
+    if (message.guild.channels.exists("name", "t!ticket" + message.author.id)) return message.channel.send(`You already have a ticket open.`);
     message.guild.createChannel(`ticket-${message.author.id}`, "text").then(c => {
         let role = message.guild.roles.find("name", "Support Team");
         let role2 = message.guild.roles.find("name", "@everyone");
@@ -895,11 +895,11 @@ if (message.content.toLowerCase().startsWith(prefix + `new`)) {
     }).catch(console.error);
 }
 if (message.content.toLowerCase().startsWith(prefix + `close`)) {
-    if (!message.channel.name.startsWith(`ticket-`)) return message.channel.send(`You can't use the close command outside of a ticket channel.`);
+    if (!message.channel.name.startsWith(`t!ticket`)) return message.channel.send(`You can't use the close command outside of a ticket channel.`);
 
-    message.channel.send(`Are you sure? Once confirmed, you cannot reverse this action!\nTo confirm, type \`1confirm\`. This will time out in 10 seconds and be cancelled.`)
+    message.channel.send(`Are you sure? Once confirmed, you cannot reverse this action!\nTo confirm, type \`t!confirm\`. This will time out in 10 seconds and be cancelled.`)
     .then((m) => {
-      message.channel.awaitMessages(response => response.content === 'p!confirm', {
+      message.channel.awaitMessages(response => response.content === 't!confirm', {
         max: 1,
         time: 10000,
         errors: ['time'],
@@ -919,8 +919,8 @@ if (message.content.toLowerCase().startsWith(prefix + `close`)) {
 
 client.on('message', message => {
   if (true) {
-if (message.content === 'p!invite') {
-      message.author.send(' :gift_heart: رابط بوتك  |  تفضل ربط البوت https://discordapp.com/api/oauth2/authorize?client_id=503961088237240330&permissions=0&scope=bot    ').catch(e => console.log(e.stack));
+if (message.content === 't!invite') {
+      message.author.send(' :gift_heart: رابط بوتك  |  تفضل ربط البوت https://discordapp.com/api/oauth2/authorize?client_id=504653862867697664&permissions=8&scope=bot    ').catch(e => console.log(e.stack));
 
     }
    } 
@@ -928,7 +928,7 @@ if (message.content === 'p!invite') {
 
 
 client.on('message', message => {
-     if (message.content === "p!invite") {
+     if (message.content === "t!invite") {
      let embed = new Discord.RichEmbed()
   .setAuthor(message.author.username)
   .setColor("#9B59B6")
@@ -941,7 +941,7 @@ client.on('message', message => {
 });
 
 client.on('message', msg => {
-  if(msg.content === 'p!hide') {
+  if(msg.content === 't!hide') {
     msg.guild.channels.forEach(c => {
       c.overwritePermissions(msg.guild.id, {
         SEND_MESSAGES: false,
@@ -953,7 +953,7 @@ client.on('message', msg => {
 })
  
 client.on('message', msg => {
-  if(msg.content === 'p!unhide') {
+  if(msg.content === 't!unhide') {
     msg.guild.channels.forEach(c => {
       c.overwritePermissions(msg.guild.id, {
         SEND_MESSAGES: true,
@@ -982,7 +982,7 @@ if(bz.content.startsWith(prefix + 'makecolors')) {
        
        client.on('message', message => {
           let args = message.content.split(' ').slice(1);
-   if(message.content.split(' ')[0] == 'p!color'){
+   if(message.content.split(' ')[0] == 't!color'){
            const embedd = new Discord.RichEmbed()
      .setFooter('Requested by '+message.author.username, message.author.avatarURL)
    .setDescription(`**There's No Color With This Number ** :x: `)
@@ -1040,7 +1040,7 @@ message.channel.send(embed)
 });
 
 client.on("message", (message) => {
-if (message.content.startsWith("p!ct")) {
+if (message.content.startsWith("t!ct")) {
             if (!message.member.hasPermission('MANAGE_CHANNELS')) return message.reply("You Don't Have `MANAGE_CHANNELS` Premissions ");
         let args = message.content.split(" ").slice(1);
     message.guild.createChannel(args.join(' '), 'text');
@@ -1051,7 +1051,7 @@ message.channel.sendMessage('تـم إنـشاء روم كـتابـي')
 
 
 client.on("message", (message) => {
-if (message.content.startsWith("p!cv")) {
+if (message.content.startsWith("t!cv")) {
             if (!message.member.hasPermission('MANAGE_CHANNELS')) return message.reply("You Don't Have `MANAGE_CHANNELS` Premissions ");
         let args = message.content.split(" ").slice(1);
     message.guild.createChannel(args.join(' '), 'voice');
@@ -1086,7 +1086,7 @@ Dat = currentTime.getDate()//Alpha Codes
 
 client.on('message', async message =>{
   if (message.author.boss) return;
-	var prefix = "p!";
+	var prefix = "t!";
 
 if (!message.content.startsWith(prefix)) return;
 	let command = message.content.split(" ")[0];
@@ -1144,7 +1144,7 @@ if(!message.guild.member(client.user).hasPermission("MANAGE_MESSAGES")) return m
 });
 
 client.on('message', message => {
-            if (message.content.startsWith("p!rules")) {
+            if (message.content.startsWith("t!rules")) {
      let embed = new Discord.RichEmbed()
 .setThumbnail(message.author.avatarURL)
 .addField('قوانين سيرفر ! Top Gamers')
@@ -1163,7 +1163,7 @@ client.on('message', message => {
 });
 
 client.on('message', message => { 
-let PREFIX = 'p!'
+let PREFIX = 't!'
     if (message.content.startsWith(PREFIX + 'emojilist')) {
 
         const List = message.guild.emojis.map(e => e.toString()).join(" ");
@@ -1180,7 +1180,7 @@ let PREFIX = 'p!'
 
 client.on('message', message => {
               if (!message.channel.guild) return;
-      if(message.content =='p!meb')  /// By KillerFox_ حقوق الفا كودز
+      if(message.content =='t!meb')  /// By KillerFox_ حقوق الفا كودز
       var IzRo = new Discord.RichEmbed() /// By KillerFox_ حقوق الفا كودز
       .setThumbnail(message.author.avatarURL)  /// By KillerFox_ حقوق الفا كودز
       .setFooter(message.author.username, message.author.avatarURL) /// الفا كودز
