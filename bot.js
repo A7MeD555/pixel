@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-var prefix = "p!";
+var prefix = "t!";
 client.on('ready', () => {
     console.log('I am ready!');
 });
@@ -34,7 +34,7 @@ message.channel.sendEmbed(embed)
 
    client.on("message", message => {
 	var prefix = "t!";
- if (message.content === "p!help-gn") {
+ if (message.content === "t!help-gn") {
 	 message.channel.send('**تم ارسال رسالة في الخاص** :mailbox_with_mail: ');
   const embed = new Discord.RichEmbed() 
       .setColor("RANDOM")
@@ -77,8 +77,8 @@ The bot was made By أحمد#3933
    }); 
 
    client.on("message", message => {
-	var prefix = "p!";
- if (message.content === "1help-ad") {
+	var prefix = "t!";
+ if (message.content === "t!help-ad") {
 	 message.channel.send('**تم ارسال رسالة بالخاص** :mailbox_with_mail: ');
   const embed = new Discord.RichEmbed() 
       .setColor("RANDOM")
