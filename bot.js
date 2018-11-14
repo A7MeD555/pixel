@@ -9,7 +9,7 @@ client.on('ready', () => {
 
 client.on("ready", () => {
   console.log("Vulnix | Logged in! Server count: ${client.guilds.size}");
-  client.user.setGame(`t!help | By ↄᓄב I♛`);
+  client.user.setGame(`t!help | By أحمد`);
 });
 
 
