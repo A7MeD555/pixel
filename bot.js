@@ -1232,9 +1232,53 @@ client.on('message',async message => {
     }
   });
 
+client.on('guildMemberAdd', member => {
+    let channel = member.guild.channels.find('name', '『welcome』');
+    let memberavatar = member.user.avatarURL
+      if (!channel) return; 
+    let embed = new Discord.RichEmbed()
+        .setColor('RANDOM')
+        .setThumbnail(memberavatar)
+        .addField(':running_shirt_with_sash: | name :  ',`${member}`)
+        .addField(':loudspeaker: | نورت السيرفر ي قلبي' , `Welcome to the server, ${member}`)
+        .addField(':id: | user :', "**[" + `${member.id}` + "]**" )
+                .addField('➡| انت العضو رقم',`${member.guild.memberCount}`)
+               
+                  .addField("Name:",`<@` + `${member.id}` + `>`, true)
+                      
+                                     .addField(' الـسيرفر', `${member.guild.name}`,true)
+                                       
+     .setFooter("**Last Code**")
+        .setTimestamp()
+    
+      channel.sendEmbed(embed);
+    });
+		
 
+const invites = {};
 
+const wait = require('util').promisify(setTimeout);
 
+client.on('ready', () => {
+  wait(1000);
+
+  client.guilds.forEach(g => {
+    g.fetchInvites().then(guildInvites => {
+      invites[g.id] = guildInvites;
+    });
+  });
+});
+
+client.on('guildMemberAdd', member => {
+  member.guild.fetchInvites().then(guildInvites => {
+    const ei = invites[member.guild.id];
+    invites[member.guild.id] = guildInvites;
+    const invite = guildInvites.find(i => ei.get(i.code).uses < i.uses);
+    const inviter = client.users.get(invite.inviter.id);
+    const logChannel = member.guild.channels.find(channel => channel.name === "『welcome』");
+    logChannel.send(`${member} Invited by: <@${inviter.id}>`);
+  });
+});
 
 
 // THIS  MUST  BE  THIS  WAY
