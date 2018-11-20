@@ -1232,16 +1232,31 @@ client.on('message',async message => {
     }
   });
 
-client.on('guildMemberAdd', member => {
-  member.guild.fetchInvites().then(guildInvites => {
-    const ei = invites[member.guild.id];
-    const invite = guildInvites.find(i => ei.get(i.code).uses < i.uses);
-    const inviter = client.users.get(invite.inviter.id);
-    const stewart = member.guild.channels.find("name", "hi");
-     stewart.send(`<@${member.user.id}> تمت الدعوه من <@${inviter.id}>`);
-   //  stewart.send(`<@${member.user.id}> joined using invite code ${invite.code} from <@${inviter.id}>. Invite was used ${invite.uses} times since its creation.`);
-  }); 
+message.channel.send("**Welcome**");
+}
 });
+
+client.on('guildMemberAdd', member => {
+    let channel = member.guild.channels.find('name', 'squáaash');
+    let memberavatar = member.user.avatarURL
+      if (!channel) return;
+    let embed = new Discord.RichEmbed()
+        .setColor('RANDOM')
+        .setThumbnail(memberavatar)
+        .addField('•🔰|Name» الإسم',`${member}`)
+        .addField('•🌹|Welcome » نورت السيرفر' , `Welcome to the server, ${member}`)
+        .addField('•🆔| User » اي دي العضو', "**[" + `${member.id}` + "]**" )
+                .addField('➡| انت العضو رقم',`${member.guild.memberCount}`)                     
+                                     .addField('•🔮|Server Name » اسم السيرفر', `${member.guild.name}`,true)
+    .addField('•🕣|Time Create » مدة انشاء حسابك', member.user.createdAt.toLocaleString(), true)
+ 
+                                       
+     .setFooter("LegendGang")
+        .setTimestamp()
+
+
+
+
 
 // THIS  MUST  BE  THIS  WAY
 client.login(process.env.BOT_TOKEN);
